@@ -1,6 +1,8 @@
 language: node_js
 node_js:
     - 14
+install:
+    - yarn install --immutable
 script:
     - yarn compile
     - yarn test
