@@ -6,3 +6,4 @@ install:
 script:
     - yarn compile
     - yarn test
+    - yarn build-docs
