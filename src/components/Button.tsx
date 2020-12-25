@@ -7,13 +7,13 @@ export function Button({
     onClick,
     variant,
 }: {
-    children: React.ReactNode;
-    onClick: () => void;
+    children?: React.ReactNode;
+    onClick?: () => void;
     variant?: Variant;
 }) {
     const component = getVariant(variant).forComponent("button");
     return (
-        <button onClick={() => onClick()} className={component.root()}>
+        <button onClick={onClick} className={component.root()}>
             {children}
         </button>
     );
