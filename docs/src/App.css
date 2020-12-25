@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.layout--app {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 1fr 100px;
+    grid-template-areas:
+        "navigation content"
+        "navigation footer";
+}

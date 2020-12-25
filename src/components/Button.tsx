@@ -1,7 +1,6 @@
 import React from "react";
-import { DefaultVariant } from "../DefaultVariant";
 import { Variant } from "../Variant";
-import { Default } from "../Variants";
+import { getVariant } from "../Variants";
 
 export function Button({
     children,
@@ -12,7 +11,7 @@ export function Button({
     onClick: () => void;
     variant?: Variant;
 }) {
-    const component = (variant ?? Default).forComponent("button");
+    const component = getVariant(variant).forComponent("button");
     return (
         <button onClick={() => onClick()} className={component.root()}>
             {children}
