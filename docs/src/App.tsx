@@ -5,6 +5,7 @@ import { Section } from "../../src/components/Section";
 import { DefaultVariant } from "../../src/DefaultVariant";
 import "../../src/style.css";
 import "./App.css";
+import { Nav } from "./Nav";
 
 const AppLayout = new DefaultVariant("app");
 
@@ -12,7 +13,9 @@ export function App() {
     return (
         <div>
             <Layout variant={AppLayout}>
-                <LayoutArea name="navigation">Nav</LayoutArea>
+                <LayoutArea name="navigation">
+                    <Nav />
+                </LayoutArea>
                 <LayoutArea name="content">
                     <Section>
                         <Button>Click Me</Button>

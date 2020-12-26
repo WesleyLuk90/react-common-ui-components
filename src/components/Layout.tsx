@@ -1,4 +1,5 @@
-import React, { ReactNode } from "react";
+import React, { ReactElement, ReactNode } from "react";
+import { TypedChildren } from "../../docs/src/utils/TypedChildren";
 import { Variant } from "../Variant";
 import { getVariant } from "../Variants";
 
@@ -7,7 +8,7 @@ export function Layout({
     children,
 }: {
     variant?: Variant;
-    children?: ReactNode;
+    children?: TypedChildren<typeof LayoutArea>;
 }) {
     const component = getVariant(variant).forComponent("layout");
     return <div className={component.root()}>{children}</div>;
