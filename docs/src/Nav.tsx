@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "../../src/components/Link";
 import {
     Navigation,
     NavigationItem,
@@ -8,7 +9,9 @@ import {
 export function Nav() {
     return (
         <Navigation>
-            <NavigationItem>Foo</NavigationItem>
+            <NavigationItem>
+                <Link href="#">Foo</Link>
+            </NavigationItem>
             <NavigationItem>Bar</NavigationItem>
             <NavigationSeparator></NavigationSeparator>
             <NavigationItem>Baz</NavigationItem>
