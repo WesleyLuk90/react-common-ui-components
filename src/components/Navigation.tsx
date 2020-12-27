@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode } from "react";
+import React, { createContext, ReactNode, useContext } from "react";
 import { TypedChildren } from "../../docs/src/utils/TypedChildren";
 import { ComponentVariant, Variant } from "../Variant";
 import { getVariant } from "../Variants";
@@ -25,21 +25,11 @@ export function Navigation({
 }
 
 export function NavigationItem({ children }: { children?: ReactNode }) {
-    return (
-        <NavigationContext.Consumer>
-            {(variant) => (
-                <li className={variant?.forElement("item")}>{children}</li>
-            )}
-        </NavigationContext.Consumer>
-    );
+    const variant = useContext(NavigationContext);
+    return <li className={variant?.forElement("item")}>{children}</li>;
 }
 
 export function NavigationSeparator() {
-    return (
-        <NavigationContext.Consumer>
-            {(variant) => (
-                <li className={variant?.forElement("separator")}></li>
-            )}
-        </NavigationContext.Consumer>
-    );
+    const variant = useContext(NavigationContext);
+    return <li className={variant?.forElement("separator")}></li>;
 }

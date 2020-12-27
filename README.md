@@ -2,6 +2,8 @@
 
 -   Separation of concern
     -   Application logic should be separate from UI structure from look and feel (css)
+-   Semantics
+    -   Components should describe use or meaning and not describe look
 -   Customizability
 -   Performance
     -   Components should be performant by default
