@@ -3,7 +3,8 @@ import { Button } from "../../src/components/Button";
 import { Layout, LayoutArea } from "../../src/components/Layout";
 import { Section } from "../../src/components/Section";
 import { DefaultVariant } from "../../src/DefaultVariant";
-import "../../src/themes/simple.css";
+import "../../src/reset.css";
+import "../../src/themes/bootstrap.scss";
 import "./App.css";
 import { Nav } from "./Nav";
 

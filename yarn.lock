@@ -2481,7 +2481,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"anymatch@npm:^3.0.3":
+"anymatch@npm:^3.0.3, anymatch@npm:~3.1.1":
   version: 3.1.1
   resolution: "anymatch@npm:3.1.1"
   dependencies:
@@ -2853,6 +2853,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"binary-extensions@npm:^2.0.0":
+  version: 2.1.0
+  resolution: "binary-extensions@npm:2.1.0"
+  checksum: 12bee2817930b211b88f6de5da2edb64f924ffde79e01516fcb17005a39e75374fae1ce1a9c58b52557a4d81eb6eb7a804cbe7170ea3a553919a7ce0053e2e4f
+  languageName: node
+  linkType: hard
+
 "bindings@npm:^1.5.0":
   version: 1.5.0
   resolution: "bindings@npm:1.5.0"
@@ -2919,6 +2926,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bootstrap@npm:next":
+  version: 5.0.0-beta1
+  resolution: "bootstrap@npm:5.0.0-beta1"
+  peerDependencies:
+    "@popperjs/core": ^2.5.4
+  checksum: c5e3a5f2fcb32cdfabb4f223a37f7ff082909dc19dc289e92fd9232b5f41a5a2216094effd79d028117ec6a0fe96ed3d310cf295d8da851132dd7edd769d3603
+  languageName: node
+  linkType: hard
+
 "brace-expansion@npm:^1.1.7":
   version: 1.1.11
   resolution: "brace-expansion@npm:1.1.11"
@@ -2947,7 +2963,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"braces@npm:^3.0.1":
+"braces@npm:^3.0.1, braces@npm:~3.0.2":
   version: 3.0.2
   resolution: "braces@npm:3.0.2"
   dependencies:
@@ -3193,6 +3209,25 @@ __metadata:
     parse5: ^6.0.0
     parse5-htmlparser2-tree-adapter: ^6.0.0
   checksum: 9e5c762323c3e3b56027a2e638aab6afa28191df399a57e517300a31b35e8b1665c588ab15baf9cb3a7f7ea7de7446e0e4d975cc3386027c2eb06c8ec5ed0b0d
+  languageName: node
+  linkType: hard
+
+"chokidar@npm:>=2.0.0 <4.0.0":
+  version: 3.4.3
+  resolution: "chokidar@npm:3.4.3"
+  dependencies:
+    anymatch: ~3.1.1
+    braces: ~3.0.2
+    fsevents: ~2.1.2
+    glob-parent: ~5.1.0
+    is-binary-path: ~2.1.0
+    is-glob: ~4.0.1
+    normalize-path: ~3.0.0
+    readdirp: ~3.5.0
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  checksum: b5a566b31267b1a71c2e7544fbf8c21f597883515d9bfc0356719be6c3b34ee51b0329f3ee5f5d98060ce2930be68f8c33b53f8b3659dc101fd51be265831deb
   languageName: node
   linkType: hard
 
@@ -4903,6 +4938,24 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
+"fsevents@patch:fsevents@~2.1.2#builtin<compat/fsevents>":
+  version: 2.1.3
+  resolution: "fsevents@patch:fsevents@npm%3A2.1.3#builtin<compat/fsevents>::version=2.1.3&hash=11e9ea"
+  dependencies:
+    node-gyp: latest
+  checksum: e2b8c379340e21a786d32c653854c8876f94eb1202dd5be378fd42c062bc123aab5051c32bf0011865257c85982c41ded203f9fe8c9f9c8f8c84dc4672abc0e0
+  languageName: node
+  linkType: hard
+
+fsevents@~2.1.2:
+  version: 2.1.3
+  resolution: "fsevents@npm:2.1.3"
+  dependencies:
+    node-gyp: latest
+  checksum: 8977781884d06c5bcb97b5f909efdce9683c925f2a0ce7e098d2cdffe2e0a0a50b1868547bb94dca75428c06535a4a70517a7bb3bb5a974d93bf9ffc067291eb
+  languageName: node
+  linkType: hard
+
 "function-bind@npm:^1.1.1":
   version: 1.1.1
   resolution: "function-bind@npm:1.1.1"
@@ -5021,7 +5074,7 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"glob-parent@npm:^5.1.0":
+"glob-parent@npm:^5.1.0, glob-parent@npm:~5.1.0":
   version: 5.1.1
   resolution: "glob-parent@npm:5.1.1"
   dependencies:
@@ -5646,6 +5699,15 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
+"is-binary-path@npm:~2.1.0":
+  version: 2.1.0
+  resolution: "is-binary-path@npm:2.1.0"
+  dependencies:
+    binary-extensions: ^2.0.0
+  checksum: 49a1446a3cf3719e91a061f0e52add18fd065325c652c277519a2ad333440dc8b449076a893277a46940ef16f05a908716667ca8f986b28c677b9acb11e10a36
+  languageName: node
+  linkType: hard
+
 "is-boolean-object@npm:^1.0.1":
   version: 1.1.0
   resolution: "is-boolean-object@npm:1.1.0"
@@ -5807,7 +5869,7 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"is-glob@npm:^4.0.0, is-glob@npm:^4.0.1":
+"is-glob@npm:^4.0.0, is-glob@npm:^4.0.1, is-glob@npm:~4.0.1":
   version: 4.0.1
   resolution: "is-glob@npm:4.0.1"
   dependencies:
@@ -6739,6 +6801,13 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
+"klona@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "klona@npm:2.0.4"
+  checksum: be4a0c784135b6a75ac2c5ac9564894807aa050de041ac775a20d3ee46969ac5c3d37503d12c215c7decb592196e59e22852fd0cf28ac0cc29fe3a6df9168624
+  languageName: node
+  linkType: hard
+
 "leven@npm:^3.1.0":
   version: 3.1.0
   resolution: "leven@npm:3.1.0"
@@ -7392,7 +7461,7 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"normalize-path@npm:^3.0.0":
+"normalize-path@npm:^3.0.0, normalize-path@npm:~3.0.0":
   version: 3.0.0
   resolution: "normalize-path@npm:3.0.0"
   checksum: 215a701b471948884193628f3e38910353abf445306b519c42c2a30144b8beb8ca0a684da97bfc2ee11eb168c35c776d484274da4bd8f213d2b22f70579380ee
@@ -8338,6 +8407,7 @@ fsevents@^2.1.2:
     "@yarnpkg/pnpify": ^2.4.0
     babel-jest: ^26.6.3
     babel-loader: ^8.2.2
+    bootstrap: next
     css-loader: ^5.0.1
     enzyme: ^3.11.0
     enzyme-adapter-react-16: ^1.15.5
@@ -8345,6 +8415,8 @@ fsevents@^2.1.2:
     jest: ^26.6.3
     react: ^17.0.1
     react-dom: ^17.0.1
+    sass: ^1.30.0
+    sass-loader: ^10.1.0
     style-loader: ^2.0.0
     typescript: ^4.1.3
     webpack: ^5.11.0
@@ -8461,6 +8533,15 @@ fsevents@^2.1.2:
     micromatch: ^3.1.10
     readable-stream: ^2.0.2
   checksum: 00b5209ee5278ba6faa2fbcabb817e8f64a498ff7fee8cfd30634a04140e673375582812c67c59e25ee3ee9979687b1c832f33e1bbacd8ac3340bab0645b8374
+  languageName: node
+  linkType: hard
+
+"readdirp@npm:~3.5.0":
+  version: 3.5.0
+  resolution: "readdirp@npm:3.5.0"
+  dependencies:
+    picomatch: ^2.2.1
+  checksum: a64fe5606937d9655252230003362d95da05dbfd3baecedb4bb8c1bc0df497d051a192f9b75345c944e58a0b362c68349be602d6dbf05d03770e510b35a9f80f
   languageName: node
   linkType: hard
 
@@ -8866,6 +8947,42 @@ fsevents@^2.1.2:
   bin:
     sane: ./src/cli.js
   checksum: e384e252021b1afef7459e994fe3ea79d114a0e7d23a03e660444abf15a2b4c50ce7eac2810b2c289e857c618d96fb35ee66356ebd4d6cb97cb11b54b2b29600
+  languageName: node
+  linkType: hard
+
+"sass-loader@npm:^10.1.0":
+  version: 10.1.0
+  resolution: "sass-loader@npm:10.1.0"
+  dependencies:
+    klona: ^2.0.4
+    loader-utils: ^2.0.0
+    neo-async: ^2.6.2
+    schema-utils: ^3.0.0
+    semver: ^7.3.2
+  peerDependencies:
+    fibers: ">= 3.1.0"
+    node-sass: ^4.0.0 || ^5.0.0
+    sass: ^1.3.0
+    webpack: ^4.36.0 || ^5.0.0
+  peerDependenciesMeta:
+    fibers:
+      optional: true
+    node-sass:
+      optional: true
+    sass:
+      optional: true
+  checksum: f443dad79ba982462ff69a860207324c9f19e122c59f03b0608557a4aa7ec2158e6172059c6d8ae4fe5bad0182c3b0434904571b3a36e8ec5e0c44a7610bcebb
+  languageName: node
+  linkType: hard
+
+"sass@npm:^1.30.0":
+  version: 1.30.0
+  resolution: "sass@npm:1.30.0"
+  dependencies:
+    chokidar: ">=2.0.0 <4.0.0"
+  bin:
+    sass: sass.js
+  checksum: 8bbaf43df42290902d0d325bcbaef5e43409ad5bd4de8447d0f94dc7e6571aec191c26045e06de2d1c38d22cf7ee33b58b9f1a99e4451743d9841f40ab837d10
   languageName: node
   linkType: hard
 
