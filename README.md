@@ -16,3 +16,8 @@
 # Design Principles
 
 -   Different UI components for different behaviours
+
+# Development guide
+
+-   The built in styles should reset
+-   The simple theme provides basic theming

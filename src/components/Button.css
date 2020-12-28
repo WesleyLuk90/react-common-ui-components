@@ -4,9 +4,5 @@
     outline: none;
     padding: 0;
     margin: 0;
-}
-.button--default {
-    border: solid 1px #999;
-    padding: 0.5em 0.75em;
-    cursor: pointer;
+    user-select: none;
 }
