@@ -7,6 +7,7 @@ import "../../src/reset.css";
 import "../../src/themes/bootstrap.scss";
 import "./App.css";
 import { Nav } from "./Nav";
+import { TextSection } from "./sections/TextSection";
 
 const AppLayout = new DefaultVariant("app");
 
@@ -18,6 +19,7 @@ export function App() {
                     <Nav />
                 </LayoutArea>
                 <LayoutArea name="content">
+                    <TextSection />
                     <Section>
                         <Button>Click Me</Button>
                         <Button>Not Me</Button>

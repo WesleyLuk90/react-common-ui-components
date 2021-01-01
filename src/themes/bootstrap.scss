@@ -3,7 +3,9 @@
 @import "~bootstrap/scss/mixins";
 // @import "~bootstrap/scss/utilites";
 
+@import "~bootstrap/scss/reboot";
 @import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/type";
 
 .button--default {
     @extend .btn;
