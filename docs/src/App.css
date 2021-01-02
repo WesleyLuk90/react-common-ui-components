@@ -16,3 +16,7 @@ body {
         "navigation content"
         "navigation footer";
 }
+
+.section--default > * + * {
+    margin-top: 1.5em;
+}

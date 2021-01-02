@@ -18,7 +18,9 @@ export function TextInput({
     const component = getVariant(variant).forComponent("text-input");
     return (
         <div className={component.root()}>
-            {label && <label className={component.root()}>{label}</label>}
+            {label && (
+                <label className={component.forElement("label")}>{label}</label>
+            )}
             <input
                 type="text"
                 className={component.forElement("input")}
