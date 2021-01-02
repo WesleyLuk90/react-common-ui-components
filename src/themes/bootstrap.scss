@@ -1,13 +1,22 @@
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
-// @import "~bootstrap/scss/utilites";
 
 @import "~bootstrap/scss/reboot";
+
 @import "~bootstrap/scss/buttons";
 @import "~bootstrap/scss/type";
+@import "~bootstrap/scss/forms";
 
 .button--default {
     @extend .btn;
     @extend .btn-primary;
+}
+
+.text-input__label {
+    @extend .form-label;
+}
+
+.text-input__input {
+    @extend .form-control;
 }
