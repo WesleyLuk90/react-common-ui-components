@@ -4587,6 +4587,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-react-hooks@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "eslint-plugin-react-hooks@npm:4.2.0"
+  peerDependencies:
+    eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
+  checksum: 5378d16b5a56431a7a77b56d61464dbbfa343e8607da87b851a6caee44b96e08847147321f5f38de30d20668418691d859f69d9c5262dfb5308856382252096c
+  languageName: node
+  linkType: hard
+
 "eslint-scope@npm:^5.0.0, eslint-scope@npm:^5.1.1":
   version: 5.1.1
   resolution: "eslint-scope@npm:5.1.1"
@@ -8812,6 +8821,7 @@ fsevents@~2.1.2:
     enzyme-adapter-react-16: ^1.15.5
     eslint: ^7.17.0
     eslint-config-prettier: ^7.1.0
+    eslint-plugin-react-hooks: ^4.2.0
     html-webpack-plugin: ^4.5.0
     jest: ^26.6.3
     prettier: ^2.2.1

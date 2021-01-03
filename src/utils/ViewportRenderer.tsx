@@ -1,12 +1,82 @@
 import React, {
+    MutableRefObject,
+    ReactElement,
     ReactNode,
-    RefObject,
     useEffect,
     useLayoutEffect,
-    useReducer,
     useRef,
     useState,
 } from "react";
+import { clamp } from "./numbers";
+
+const PAGE_SIZE = 100;
+
+interface Render {
+    first: number;
+    last: number;
+    averageHeight: number;
+}
+
+function computeStartEndIndex(
+    scrollTop: number,
+    avgHeight: number,
+    windowMax: number
+): [number, number] {
+    const first =
+        Math.floor(Math.max(-scrollTop, 0) / avgHeight / PAGE_SIZE) * PAGE_SIZE;
+    const last =
+        Math.ceil(
+            (Math.max(-scrollTop, 0) + windowMax) / avgHeight / PAGE_SIZE
+        ) * PAGE_SIZE;
+    return [first, last];
+}
+
+function updateVisible<T>(
+    items: T[],
+    firstDiv: MutableRefObject<HTMLDivElement | null>,
+    lastDiv: MutableRefObject<HTMLDivElement | null>,
+    renderRef: MutableRefObject<Render>,
+    setRender: (r: Render) => void
+) {
+    if (items.length < PAGE_SIZE) {
+        setRender({
+            first: 0,
+            last: PAGE_SIZE,
+            averageHeight: 0,
+        });
+        return;
+    }
+    let { first, last } = renderRef.current;
+    const top = firstDiv.current?.getBoundingClientRect()?.top;
+    const bottom = lastDiv.current?.getBoundingClientRect()?.bottom;
+    if (top == null || bottom == null) {
+        return;
+    }
+    const renderedHeight = bottom - top;
+    if (renderedHeight <= 0) {
+        return;
+    }
+    const newAverageHeight = renderedHeight / (last - first);
+    const estimatedTop = top - first * newAverageHeight;
+    const [newFirst, newLast] = computeStartEndIndex(
+        estimatedTop,
+        newAverageHeight,
+        window.innerHeight
+    );
+    first = clamp(newFirst, 0, items.length);
+    last = clamp(newLast, 0, items.length);
+    if (
+        first !== renderRef.current.first ||
+        last !== renderRef.current.last ||
+        (renderRef.current.averageHeight == 0 && newAverageHeight > 0)
+    ) {
+        setRender({
+            first,
+            last,
+            averageHeight: newAverageHeight,
+        });
+    }
+}
 
 export function ViewportRenderer<T>({
     items,
@@ -14,71 +84,54 @@ export function ViewportRenderer<T>({
 }: {
     items: T[];
     children: (t: T) => ReactNode;
-}) {
-    const [topHeight, setTopHeight] = useState(0);
-    const [bottomHeight, setBottomHeight] = useState(0);
-    const [start, setStart] = useState(0);
-    const [limit, setLimit] = useState(100);
+}): ReactElement {
+    const [render, setRender] = useState<Render>({
+        first: 0,
+        last: PAGE_SIZE,
+        averageHeight: 0,
+    });
 
-    const first = useRef<HTMLDivElement>(null);
-    const last = useRef<HTMLDivElement>(null);
+    const firstDiv = useRef<HTMLDivElement>(null);
+    const lastDiv = useRef<HTMLDivElement>(null);
+    const renderRef = useRef(render);
+    renderRef.current = render;
 
     function ref(index: number) {
-        if (index == 0) {
-            return first;
+        if (index === 0) {
+            return firstDiv;
         }
-        if (index == limit - 1) {
-            return last;
+        if (index === render.last - render.first - 1) {
+            return lastDiv;
         }
         return undefined;
     }
 
-    useLayoutEffect(() => {
-        console.log("Run layout");
-        limitViewport();
-    });
-
-    function limitViewport() {
-        const top = first.current?.getBoundingClientRect()?.top;
-        const bottom = last.current?.getBoundingClientRect()?.bottom;
-        if (top == null || bottom == null) {
-            return;
-        }
-        const renderedHeight = bottom - top;
-        if (renderedHeight <= 0) {
-            return;
-        }
-        const renderedItems = Math.max(
-            Math.min(items.length - start, limit),
-            0
-        );
-        const bottomItems = Math.max(items.length - start - limit, 0);
-        const averageHeight = renderedHeight / renderedItems;
-        setBottomHeight(averageHeight * bottomItems);
-    }
-
-    function updateVisible() {}
+    useLayoutEffect(
+        () => updateVisible(items, firstDiv, lastDiv, renderRef, setRender),
+        [items]
+    );
 
     useEffect(() => {
         function onScroll() {
-            updateVisible();
+            updateVisible(items, firstDiv, lastDiv, renderRef, setRender);
         }
         window.addEventListener("scroll", onScroll, true);
         return () => window.removeEventListener("scroll", onScroll);
-    });
+    }, [items]);
+
     return (
-        <div>
-            <div style={{ height: topHeight }} />
-            {items.slice(start, start + limit).map((t, i) => (
-                <div key={start + i} ref={ref(i)}>
+        <>
+            <div style={{ height: render.first * render.averageHeight }} />
+            {items.slice(render.first, render.last).map((t, i) => (
+                <div key={render.first + i} ref={ref(i)}>
                     {children(t)}
                 </div>
             ))}
             <div
                 style={{
-                    height: bottomHeight,
+                    height: (items.length - render.last) * render.averageHeight,
                 }}
             />
-        </div>
+        </>
     );
 }
