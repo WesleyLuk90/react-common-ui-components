@@ -7,7 +7,3 @@ export function clamp(value: number, min: number, max: number): number {
     }
     return value;
 }
-
-export function isBetween(value: number, min: number, max: number): boolean {
-    return value > min && value < max;
-}
